@@ -1,16 +1,20 @@
 package services;
 
 import entities.Student;
-import entities.Subject;
+import enums.Subject;
 import interfaces.StudentAction;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
+
 public class StudentService implements StudentAction {
+    private static final Logger LOG = LogManager.getLogger(StudentService.class);
     @Override
     public Student createStudent(Student student) {
-        int id = 1000;
+
         String name = (JOptionPane.showInputDialog(null,"Enter name of the student."));
         name = name.toUpperCase();
         student.setName(name);
@@ -18,30 +22,29 @@ public class StudentService implements StudentAction {
         surname = surname.toUpperCase();
         student.setSurname(surname);
         student.setApproveSubject(Integer.parseInt(JOptionPane.showInputDialog(null,"Enter number of approved subjects of the student.")));
-        student.setTotalSubject(Integer.parseInt(JOptionPane.showInputDialog(null,10)));
-        id ++;
-        student.setId(id);
+        student.setTotalSubject(10);
         return student;
     }
 
     @Override
     public int chooseStudent(ArrayList<Student> studentList) {
-        boolean flag = false;
+        boolean flag = true;
         int index = 0;
-        while(!flag) {
+        while(flag) {
             String name = JOptionPane.showInputDialog(null, "Enter a name to search.");
             name = name.toUpperCase();
 
             for (Student student : studentList) {
                 student.setName(name);
                 if(student.getName().equals(studentList.get(index).getName())) {
-                    flag = true;
+                    flag = false;
+                    LOG.info("The student exist.");
                 } else {
                     index++;
                 }
             }
-            if (!flag) {
-                JOptionPane.showMessageDialog(null, "The student doesn't exist. Try again.");
+            if (flag) {
+                LOG.info("The student doesn't exist. Try again.");
                 index = 0;
             }
         }
@@ -59,47 +62,58 @@ public class StudentService implements StudentAction {
                 if (op == 1) {
                     flag = false;
                 }
+                LOG.info("You are register in:"+"\n"+"\n"+studentList.get(index).getSubject());
             }
         } else {
-            JOptionPane.showMessageDialog(null,"The student has all subjects approved.");
+            LOG.info("The student has all subjects approved.");
         }
     }
 
     @Override
     public void doProcedure(ArrayList<Student> studentList) {
         boolean flag = false;
-        int id = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter your id."));
-        for (Student student : studentList) {
-            if (student.getId() == id) {
-                JOptionPane.showMessageDialog(null, student);
-                flag = true;
-                break;
+        int index = 0;
+
+        do {
+            int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your id."));
+            for (Student aux2 : studentList) {
+                aux2.setId(id);
+                if (aux2.getId() != studentList.get(index).getId()) {
+                    index++;
+                } else {
+                    break;
+                }
             }
-        }
-        if(flag){
-            JOptionPane.showMessageDialog(null,"The id doesn't exist.");
-        }
+            if (studentList.get(index).getId() == id) {
+                LOG.info("Information about the student:" + "\n" + "\n" + studentList.get(index));
+
+                flag = true;
+            } else {
+                LOG.info("The id doesn't exist.");
+            }
+        } while(flag);
     }
 
     @Override
     public int buyTicket(ArrayList<Student> studentList) {
-        boolean flag = false;
-        int num = 0;
+        int index = 0;
         int id = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter your id."));
-        for (Student student : studentList) {
-            if (student.getId() == id) {
-                JOptionPane.showMessageDialog(null, "Successful purchase." + "\n" + "\n" +
-                        "Name:     " + student.getName() + "\n" +
-                        "Surname:  " + student.getSurname() + "\n" + "\n" +
-                        "          ------LUNCH TICKET------");
-                flag = true;
-                num ++;
+        for (Student aux2 : studentList) {
+            aux2.setId(id);
+            if (aux2.getId() != studentList.get(index).getId()) {
+                index++;
+            } else {
                 break;
             }
         }
-        if(flag){
-            JOptionPane.showMessageDialog(null,"The id doesn't exist.");
+        if (studentList.get(index).getId() == id) {
+            LOG.info("Successful purchase." + "\n" + "\n" +
+                    "Name:     " + studentList.get(index).getName() + "\n" +
+                    "Surname:  " + studentList.get(index).getSurname() + "\n" + "\n" +
+                    "          ------LUNCH TICKET------");
+        } else {
+            LOG.info("The id doesn't exist.");
         }
-        return num;
+        return studentList.get(index).getId();
     }
 }

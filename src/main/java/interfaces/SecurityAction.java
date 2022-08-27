@@ -1,6 +1,6 @@
 package interfaces;
 
-import entities.Room;
+import enums.Room;
 
 public interface SecurityAction {
     void cleanRoom(Room room);

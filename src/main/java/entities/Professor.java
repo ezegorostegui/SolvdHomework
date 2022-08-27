@@ -1,8 +1,8 @@
 package entities;
 
+import enums.Room;
+import enums.Subject;
 import interfaces.ProfessorAction;
-
-import java.util.Date;
 
 public abstract class Professor extends Worker implements ProfessorAction {
     protected Student student;

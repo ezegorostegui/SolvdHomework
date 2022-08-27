@@ -1,8 +1,6 @@
 package entities;
 
-import interfaces.ChefAction;
-
-import java.util.Date;
+import enums.Room;
 
 public final class Chef extends Worker  {
     private boolean hasUniform;

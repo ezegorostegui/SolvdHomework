@@ -1,4 +1,6 @@
-package entities;
+package enums;
+
+import entities.Student;
 
 import javax.swing.*;
 import java.util.ArrayList;

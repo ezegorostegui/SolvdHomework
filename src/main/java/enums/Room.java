@@ -1,4 +1,4 @@
-package entities;
+package enums;
 
 public enum Room {
     Classroom1("First floor"),Classroom2("First floor"),Classroom3("First floor"),

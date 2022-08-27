@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.Date;
+import enums.Room;
 
 public abstract class Worker extends Person{
     protected Integer salary;

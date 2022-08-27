@@ -1,7 +1,9 @@
 package entities;
 
+import enums.Room;
+import enums.Subject;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 public final class AssociateProfessor extends Professor{
     public AssociateProfessor(String name, String surname, Integer salary, Integer antiquity,

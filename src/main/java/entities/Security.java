@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.Date;
+import enums.Room;
 
 public final class Security extends Worker{
     private boolean hasUniform;

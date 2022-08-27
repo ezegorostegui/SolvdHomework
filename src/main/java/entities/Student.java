@@ -1,5 +1,8 @@
 package entities;
 
+import enums.Room;
+import enums.Subject;
+
 import java.util.ArrayList;
 
 public final class Student extends Person {
