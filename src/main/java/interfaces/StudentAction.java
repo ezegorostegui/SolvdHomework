@@ -8,6 +8,6 @@ public interface StudentAction {
     Student createStudent(Student student);
     int chooseStudent(ArrayList<Student> studentList);
     void chooseSubject(ArrayList<Student> studentList, int index);
-    Student doProcedure(Student student);
+    void doProcedure(ArrayList<Student> studentList);
     int buyTicket(ArrayList<Student> studentList);
 }

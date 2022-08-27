@@ -1,4 +1,4 @@
-package main;
+package services.main;
 
 import entities.Student;
 import services.StudentService;
@@ -37,10 +37,10 @@ public class Main {
                     ser.chooseSubject(studentList, index);
                     break;
                 case 3:
-
+                    ser.buyTicket(studentList);
                     break;
                 case 4:
-
+                    ser.doProcedure(studentList);
                     break;
                 default:
                     finish = true;
