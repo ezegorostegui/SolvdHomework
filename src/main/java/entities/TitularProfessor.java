@@ -4,36 +4,27 @@ import enums.Room;
 import enums.Subject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public final class TitularProfessor extends Professor{
 
+    public TitularProfessor(){}
     public TitularProfessor(String name, String surname, Integer salary, Integer antiquity,
-                            boolean workingSchedule, Room workplace, Student student, Subject subject) {
+                            String workingSchedule, Room workplace, HashSet<Student> student, Subject subject) {
         super(name, surname, salary, antiquity, workingSchedule, workplace, student, subject);
     }
 
     @Override
-    public Professor createProfessor() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Student> assignStudent() {
-        return null;
-    }
-
-    @Override
-    public void assignTitularProfessor() {
-
-    }
-
-    @Override
-    public void evaluateStudent() {
-
-    }
-
-    @Override
-    public int buyTicket(Professor professor) {
-        return 0;
+    public String toString() {
+        return "TitularProfessor{" +
+                "studentList=" + studentList +
+                ", subject=" + subject +
+                ", salary=" + salary +
+                ", antiquity=" + antiquity +
+                ", workingSchedule='" + workingSchedule + '\'' +
+                ", workplace=" + workplace +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 }

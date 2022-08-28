@@ -56,4 +56,17 @@ public final class Student extends Person {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "subject=" + subject +
+                ", classRoom=" + classRoom +
+                ", totalSubject=" + totalSubject +
+                ", approveSubject=" + approveSubject +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 }

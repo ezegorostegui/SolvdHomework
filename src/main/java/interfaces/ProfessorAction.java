@@ -10,5 +10,5 @@ public interface ProfessorAction {
     ArrayList<Student> assignStudent();
     void assignTitularProfessor();
     void evaluateStudent();
-    int buyTicket(Professor professor);
+    int buyTicketP(Professor tp, Professor ap);
 }

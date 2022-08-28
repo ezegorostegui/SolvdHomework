@@ -62,4 +62,30 @@ public enum Subject {
         }
         return aux;
     }
+    public static Subject choose(){
+        int op = print();
+        switch (op){
+            case 1:
+                return MATHEMATICS;
+            case 2:
+                return LOGICAL;
+            case 3:
+                return REPRESENTATION_SYSTEM;
+            case 4:
+                return ENGLISH;
+            case 5:
+                return PHYSICS;
+            case 6:
+                return CHEMISTRY;
+            case 7:
+                return ARCHITECTURE;
+            case 8:
+                return MECHANICAL;
+            case 9:
+                return COMPUTER_SCIENCE;
+            case 10:
+                return BLOCKCHAIN;
+        }
+        return null;
+    }
 }

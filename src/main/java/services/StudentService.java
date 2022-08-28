@@ -12,9 +12,10 @@ import java.util.ArrayList;
 
 public class StudentService implements StudentAction {
     private static final Logger LOG = LogManager.getLogger(StudentService.class);
-    @Override
-    public Student createStudent(Student student) {
 
+    @Override
+    public Student createStudent() {
+        Student student = new Student();
         String name = (JOptionPane.showInputDialog(null,"Enter name of the student."));
         name = name.toUpperCase();
         student.setName(name);
@@ -96,8 +97,7 @@ public class StudentService implements StudentAction {
 
     @Override
     public int buyTicket(ArrayList<Student> studentList) {
-        int index = 0;
-        int id = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter your id."));
+        int index = 0, id = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter your id."));
         for (Student aux2 : studentList) {
             aux2.setId(id);
             if (aux2.getId() != studentList.get(index).getId()) {
