@@ -2,6 +2,7 @@ package services;
 
 import entities.Student;
 import enums.Subject;
+import exceptions.ProjectExceptions;
 import interfaces.StudentAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,16 +15,20 @@ public class StudentService implements StudentAction {
     private static final Logger LOG = LogManager.getLogger(StudentService.class);
 
     @Override
-    public Student createStudent() {
+    public Student createStudent() throws ProjectExceptions {
         Student student = new Student();
-        String name = (JOptionPane.showInputDialog(null,"Enter name of the student."));
+        String name = (JOptionPane.showInputDialog(null, "Enter name of the student."));
         name = name.toUpperCase();
         student.setName(name);
-        String surname = (JOptionPane.showInputDialog(null,"Enter surname of the student."));
+        String surname = (JOptionPane.showInputDialog(null, "Enter surname of the student."));
         surname = surname.toUpperCase();
         student.setSurname(surname);
-        student.setApproveSubject(Integer.parseInt(JOptionPane.showInputDialog(null,"Enter number of approved subjects of the student.")));
-        student.setTotalSubject(10);
+        try{
+            student.setApproveSubject(Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number of approved subjects of the student.")));
+            student.setTotalSubject(10);
+        } catch (NumberFormatException s){
+            throw new ProjectExceptions("Invalid data. Enter an integer number.");
+        }
         return student;
     }
 
@@ -87,7 +92,6 @@ public class StudentService implements StudentAction {
             }
             if (studentList.get(index).getId() == id) {
                 LOG.info("Information about the student:" + "\n" + "\n" + studentList.get(index));
-
                 flag = true;
             } else {
                 LOG.info("The id doesn't exist.");

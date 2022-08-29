@@ -7,7 +7,7 @@ public final class Administrative extends Worker{
 
 
     public Administrative(String name, String surname, Integer salary, Integer antiquity,
-                          boolean workingSchedule, Room workplace, int office) {
+                          String workingSchedule, Room workplace, int office) {
         super(name, surname, salary, antiquity, workingSchedule, workplace);
         this.office = office;
     }
